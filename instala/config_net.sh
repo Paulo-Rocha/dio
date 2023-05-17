@@ -1,47 +1,40 @@
 #!/bin/bash
 
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/admin/svcs/atende/files/userfiles_sql.phpOLD
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/ead/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/ead/users/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/feca/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/feca/users/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/iepeterpan/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/sindipetro/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/sindipetro/users/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/tribus/users/03150724660/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/tribus/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/tribus/users/myfiles.php
-rm -f /home/atendewe/public_html/atende.dev.br/ativo/dominio/tribus/www/download/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/abspmc/users/anderson/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/abspmc/users/neuza/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/abspmc/www/imagens/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/atende/abspmc/users/anderson/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/atende/files/userfiles_sql.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/minaspetro/conselhofiscal/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/minaspetro/conselhofiscal/myfiles_rw.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/minaspetro/users/aline/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/minaspetro/users/esdras/myfiles.php
-rm -f /home/atendewe/public_html/atende/admin/svcs/minaspetro/users/marcio rocha/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/administrador/users/bernardo/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/administrador/users/marcela/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/administrador/users/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/agostinholeiloes/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/agostinholeiloes/users/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/bmais3/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/bmais3/users/bernardo/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/bmais3/users/marcela/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/bmais3/users/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/ead/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/ead/users/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/feca/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/feca/users/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/iepeterpan/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/sindipetro/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/sindipetro/users/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/tribus/users/admin/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/tribus/users/myfiles.php
-rm -f /home/atendewe/public_html/atende/dominio/tribus/www/download/myfiles.php
-rm -f /home/atendewe/public_html/atende/download/index.php
-rm -f /home/atendewe/public_html/imagens/myfiles.php
-rm -f /home/atendewe/public_html/tribus/download/myfiles.php
+#Criação de diretóriios no server
+echo "Iniciando processo..."
+mkdir /publica
+mkdir /adm
+mkdir /ven
+mkdir /sec
+
+#Criação de Grupos de usuários
+groupadd GRP_ADM
+groupadd GPR_VEN
+groupadd GRP_SEC
+
+#Criação dos usuários no server e atribuindo os grupos
+useradd carlos -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+useradd maria -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+useradd joao -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+
+useradd debora -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_VEN
+useradd sebastiao -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GPR_VEN
+useradd roberto -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GPR_VEN
+
+useradd josefina -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_SEC
+useradd amanda -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_SEC
+useradd rogerio -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_SEC
+
+
+#Permissões de acesso
+
+chown root:GRP_ADM /adm
+chown root:GPR_VEN /ven
+chown root:GPR_SEC /sec
+chmod 770 /adm
+chmod 770 /ven
+chmod 770 /sec
+
+chmod 777 /publica
+
+echo "Done!"
