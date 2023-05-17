@@ -1,18 +1,18 @@
 #!/bin/bash
 
-#Criação de diretóriios no server
+echo Criação de diretóriios no server
 echo "Iniciando processo..."
 mkdir /publica
 mkdir /adm
 mkdir /ven
 mkdir /sec
 
-#Criação de Grupos de usuários
+echo Criação de Grupos de usuários
 groupadd GRP_ADM
 groupadd GPR_VEN
 groupadd GRP_SEC
 
-#Criação dos usuários no server e atribuindo os grupos
+echo Criação dos usuários no server e atribuindo os grupos
 useradd carlos -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
 useradd maria -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
 useradd joao -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
@@ -26,7 +26,7 @@ useradd amanda -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_SEC
 useradd rogerio -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_SEC
 
 
-#Permissões de acesso
+echo Permissões de acesso
 
 chown root:GRP_ADM /adm
 chown root:GPR_VEN /ven
